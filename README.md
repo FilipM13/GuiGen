@@ -71,5 +71,5 @@ def f_with_messages():
 
 ### ... launch App?
 ```python
-app.launch
+app.launch()
 ```
