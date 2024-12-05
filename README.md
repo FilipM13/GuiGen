@@ -49,12 +49,13 @@ app.add_process(proc)
 ### ... hint types for Process?
 ```python
 def sample_function(
-    a1: int,
-    a2: float,
-    a3: str,
-    a4: bool,
-    # more will be added later
-)
+        a1: int,
+        a2: float,
+        a3: str,
+        a4: bool,
+        # more will be added later
+    ):
+    pass
 ```
 
 ### ... add custom massages in Process?
