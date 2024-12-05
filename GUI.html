@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> My App </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script type="text/javascript" src="/eel.js"></script>
+        <script async defer>
+
+            eel.expose(receive_msg);
+            function receive_msg(process, ts, msg){
+                output = document.getElementById("output_"+process);
+                output.innerHTML += '<span class="timestamp">' + ts + ': </span>' + msg + '<br>';
+            }
+
+            
+                // function to execute function_one
+function function_one(){
+    args = [];
+    
+    table = document.getElementById("orders");
+    row = table.insertRow(0);
+    c1 = row.insertCell(0);
+    c1.innerHTML = "Function One";
+    c2 = row.insertCell(1);
+    _a = [];
+    for(const a of args){
+        _a.push(`"${a[1]}"`);
+    }
+    c2.innerHTML = _a;
+    c3 = row.insertCell(2);
+    var now = new Date();
+    [y, M, d, h, m, s] = [
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDay(),
+        now.getHours(),
+        now.getMinutes(),
+        now.getSeconds(),
+    ];
+    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+    // c3.innerHTML = now.toString();
+    eel.order_process(
+        app="2787255097184",
+        process="function_one",
+        args=args
+    )();  
+};
+            
+                // function to execute this name overwrites function name function_two
+function function_two(){
+    args = [];
+    
+    inp = document.getElementById("function_two_a");
+    args.push([
+        inp.id,
+        
+        inp.value
+        
+    ]);
+    
+    table = document.getElementById("orders");
+    row = table.insertRow(0);
+    c1 = row.insertCell(0);
+    c1.innerHTML = "This Name Overwrites Function Name Function Two";
+    c2 = row.insertCell(1);
+    _a = [];
+    for(const a of args){
+        _a.push(`"${a[1]}"`);
+    }
+    c2.innerHTML = _a;
+    c3 = row.insertCell(2);
+    var now = new Date();
+    [y, M, d, h, m, s] = [
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDay(),
+        now.getHours(),
+        now.getMinutes(),
+        now.getSeconds(),
+    ];
+    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+    // c3.innerHTML = now.toString();
+    eel.order_process(
+        app="2787255097184",
+        process="function_two",
+        args=args
+    )();  
+};
+            
+                // function to execute function_three
+function function_three(){
+    args = [];
+    
+    inp = document.getElementById("function_three_blabla");
+    args.push([
+        inp.id,
+        
+        inp.value
+        
+    ]);
+    
+    table = document.getElementById("orders");
+    row = table.insertRow(0);
+    c1 = row.insertCell(0);
+    c1.innerHTML = "Function Three";
+    c2 = row.insertCell(1);
+    _a = [];
+    for(const a of args){
+        _a.push(`"${a[1]}"`);
+    }
+    c2.innerHTML = _a;
+    c3 = row.insertCell(2);
+    var now = new Date();
+    [y, M, d, h, m, s] = [
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDay(),
+        now.getHours(),
+        now.getMinutes(),
+        now.getSeconds(),
+    ];
+    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+    // c3.innerHTML = now.toString();
+    eel.order_process(
+        app="2787255097184",
+        process="function_three",
+        args=args
+    )();  
+};
+            
+                // function to execute function_four
+function function_four(){
+    args = [];
+    
+    inp = document.getElementById("function_four_complex_name");
+    args.push([
+        inp.id,
+        
+        inp.value
+        
+    ]);
+    
+    inp = document.getElementById("function_four_b");
+    args.push([
+        inp.id,
+        
+        inp.checked
+        
+    ]);
+    
+    table = document.getElementById("orders");
+    row = table.insertRow(0);
+    c1 = row.insertCell(0);
+    c1.innerHTML = "Function Four";
+    c2 = row.insertCell(1);
+    _a = [];
+    for(const a of args){
+        _a.push(`"${a[1]}"`);
+    }
+    c2.innerHTML = _a;
+    c3 = row.insertCell(2);
+    var now = new Date();
+    [y, M, d, h, m, s] = [
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDay(),
+        now.getHours(),
+        now.getMinutes(),
+        now.getSeconds(),
+    ];
+    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+    // c3.innerHTML = now.toString();
+    eel.order_process(
+        app="2787255097184",
+        process="function_four",
+        args=args
+    )();  
+};
+            
+                // function to execute stupid_process
+function stupid_process(){
+    args = [];
+    
+    table = document.getElementById("orders");
+    row = table.insertRow(0);
+    c1 = row.insertCell(0);
+    c1.innerHTML = "Stupid Process";
+    c2 = row.insertCell(1);
+    _a = [];
+    for(const a of args){
+        _a.push(`"${a[1]}"`);
+    }
+    c2.innerHTML = _a;
+    c3 = row.insertCell(2);
+    var now = new Date();
+    [y, M, d, h, m, s] = [
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDay(),
+        now.getHours(),
+        now.getMinutes(),
+        now.getSeconds(),
+    ];
+    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+    // c3.innerHTML = now.toString();
+    eel.order_process(
+        app="2787255097184",
+        process="stupid_process",
+        args=args
+    )();  
+};
+            
+        </script>
+        <style>
+            /*YES I COULD HAVE USED BOOTSTRAP...*/
+:root{
+    background-color: #29335C;
+    font-family: Arial, sans-serif;
+}
+.app_name, .order_header{
+    color: white;
+    text-align: center;
+}
+.output{
+    font-family: "Consolas";
+    background-color: rgb(99, 99, 99);
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+}
+.timestamp{
+    font-weight: lighter;
+    color: greenyellow;
+}
+.process_tab{
+    background-color: rgba(255, 235, 205);
+    padding: 5px;
+    margin: 5px;
+}
+.process_tab h2{
+    background-color: #E9A437;
+    color:#DB2B39;
+    text-align: center;
+}
+.process_tab h2 .process_version{
+    color:#29335C;
+}
+.process_tab .run{
+    font-weight: bold;
+    padding: 2px;
+}
+.order_table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 235, 205, 1); /* Light background color */
+    font-size: 14px;
+    text-align: left;
+}
+
+.order_table th, td {
+    border: 1px solid #ccc; /* Light border color for readability */
+    padding: 8px;
+}
+
+.order_table th {
+    background-color: #E9A437; /* Header row color */
+    color: #DB2B39; /* Header text color */
+    text-transform: uppercase;
+}
+
+.order_table tr:nth-child(even) {
+    background-color: rgba(255, 235, 205, 0.85); /* Slightly lighter for even rows */
+}
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <h1 class="app_name">
+             My App 
+            
+        </h1>
+        
+        
+            <div class="process_tab">
+    <h2>
+        Function One 
+        
+    </h2>
+    
+        <p class="process_description">Function one is doing some stuff for 15 seconds.</p>
+    
+    <form>
+        
+        
+        <input class="run" type="button" value="Run" onclick="function_one()" />
+    </form>
+    <h3>Output:</h3>
+    <p class="output" id="output_function_one"></p>
+</div>
+        
+            <div class="process_tab">
+    <h2>
+        This Name Overwrites Function Name Function Two 
+        
+    </h2>
+    
+        <p class="process_description">Takes some argument and print it's value in cmd + returns it.</p>
+    
+    <form>
+         <h3>Input:</h3> 
+        
+            <label for="function_two_a">A</label>
+<input
+id="function_two_a" 
+type="number"
+placeholder="<class 'int'> (number)"
+ value="123" 
+></input><br>
+        
+        <input class="run" type="button" value="Run" onclick="function_two()" />
+    </form>
+    <h3>Output:</h3>
+    <p class="output" id="output_this name overwrites function name function_two"></p>
+</div>
+        
+            <div class="process_tab">
+    <h2>
+        Function Three 
+        
+    </h2>
+    
+        <p class="process_description">This description overwrites docstring of function.</p>
+    
+    <form>
+         <h3>Input:</h3> 
+        
+            <label for="function_three_blabla">Blabla</label>
+<input
+id="function_three_blabla" 
+type="text"
+placeholder="<class 'str'> (text)"
+ value="test" 
+></input><br>
+        
+        <input class="run" type="button" value="Run" onclick="function_three()" />
+    </form>
+    <h3>Output:</h3>
+    <p class="output" id="output_function_three"></p>
+</div>
+        
+            <div class="process_tab">
+    <h2>
+        Function Four 
+        
+            <span class="process_version">1.0.3</span>
+        
+    </h2>
+    
+        <p class="process_description">This one has checkbox and complex_name as argument (to be formatted).
+Also has version.</p>
+    
+    <form>
+         <h3>Input:</h3> 
+        
+            <label for="function_four_complex_name">Complex Name</label>
+<input
+id="function_four_complex_name" 
+type="text"
+placeholder="<class 'str'> (text)"
+
+></input><br>
+        
+            <label for="function_four_b">B</label>
+<input
+id="function_four_b" 
+type="checkbox"
+placeholder="<class 'bool'> (checkbox)"
+ value="True" 
+></input><br>
+        
+        <input class="run" type="button" value="Run" onclick="function_four()" />
+    </form>
+    <h3>Output:</h3>
+    <p class="output" id="output_function_four"></p>
+</div>
+        
+            <div class="process_tab">
+    <h2>
+        Stupid Process 
+        
+            <span class="process_version">96</span>
+        
+    </h2>
+    
+        <p class="process_description">This process is using yield values as messages... what a stupid idea... I like it.</p>
+    
+    <form>
+        
+        
+        <input class="run" type="button" value="Run" onclick="stupid_process()" />
+    </form>
+    <h3>Output:</h3>
+    <p class="output" id="output_stupid_process"></p>
+</div>
+        
+        <h2 class="order_header">Ordered jobs</h2>
+        <table class="order_table">
+            <thead>
+                <tr>
+                    <th>Job</th>
+                    <th>Arguments</th>
+                    <th>Time Stamp</th>
+                </tr>
+            </thead>
+            <tbody id="orders">
+
+            </tbody>
+        </table>
+    </body>
+</html>

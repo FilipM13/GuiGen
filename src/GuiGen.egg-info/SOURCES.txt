@@ -1,0 +1,13 @@
+README.md
+setup.py
+src/GuiGen.egg-info/PKG-INFO
+src/GuiGen.egg-info/SOURCES.txt
+src/GuiGen.egg-info/dependency_links.txt
+src/GuiGen.egg-info/requires.txt
+src/GuiGen.egg-info/top_level.txt
+src/gui_gen/__init__.py
+src/gui_gen/app.py
+src/gui_gen/argument.py
+src/gui_gen/f2b_connection.py
+src/gui_gen/process.py
+src/gui_gen/template/__init__.py

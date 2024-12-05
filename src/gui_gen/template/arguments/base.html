@@ -1,0 +1,7 @@
+<label for="{{process.function.__name__}}_{{argument.name}}">{{argument.pretty_name}}</label>
+<input
+id="{{process.function.__name__}}_{{argument.name}}" 
+type="{{argument.html_type}}"
+placeholder="{{argument.arg_type}} ({{argument.html_type}})"
+{% if argument.default %} value="{{argument.default}}" {% endif %}
+></input><br>
