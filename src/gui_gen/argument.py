@@ -29,7 +29,7 @@ class Argument:
                 return self.arg_type(value)
             except:
                 warnings.warn(f'Argument {self.name} could not convert {value} ({type(value)}) to {self.arg_type}.')
-                return None
+                return value
         else:
             return value
 
