@@ -1,3 +1,4 @@
+import warnings
 
 
 class Argument:
@@ -24,7 +25,11 @@ class Argument:
         if value == '' and self.arg_type is None:
             return None
         if self.arg_type:
-            return self.arg_type(value)
+            try:
+                return self.arg_type(value)
+            except:
+                warnings.warn(f'Argument {self.name} could not convert {value} ({type(value)}) to {self.arg_type}.')
+                return None
         else:
             return value
 

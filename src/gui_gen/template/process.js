@@ -19,8 +19,9 @@ function {{process.function.__name__}}(){
     c2 = row.insertCell(1);
     _a = [];
     for(const a of args){
-        _a.push(`"${a[1]}"`);
+        _a.push(`${a[0]}: ${a[1]}`);
     }
+    _a = _a.join('<br>')
     c2.innerHTML = _a;
     c3 = row.insertCell(2);
     var now = new Date();

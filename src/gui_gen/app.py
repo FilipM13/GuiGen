@@ -1,7 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 import os
 import eel
-import template
+from . import template
 from typing import Any
 import traceback
 from datetime import datetime
@@ -36,7 +36,7 @@ class App:
         env = Environment(loader=FileSystemLoader(TEMPLATE))
         base = env.get_template('base.html')
         with open(os.sep.join([self.path, 'GUI.html']), 'w') as gui:
-            soup = bs(base.render(context))
+            soup = bs(base.render(context), features="html.parser")
             prettyHTML = soup.prettify()
             gui.write(prettyHTML)
         pass
