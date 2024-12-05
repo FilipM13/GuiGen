@@ -3,7 +3,7 @@ import inspect
 from itertools import zip_longest
 from typing import Any
 
-from argument import Argument
+from .argument import Argument
 
 class Process:
     
@@ -18,9 +18,10 @@ class Process:
         self.args = dict()
         
         if spec.args:
+            defaults = spec.defaults if spec.defaults else list()
             args = reversed(list(zip_longest(
                 reversed(spec.args), 
-                reversed(spec.defaults), 
+                reversed(defaults), 
                 fillvalue=None
             )))
             for name, default in args:
