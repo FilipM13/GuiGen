@@ -1,4 +1,4 @@
-# gui_automation
+# GUI Generator
 
 Are you lazy programmer who wants to have GUIs for his apps but does not want to create one for each app individually?
 Don't worry so am I. That's why I've spent couple of hours working on automatic GUI generator, instead of creating basic copy-paste GUI in 30 minutes.
