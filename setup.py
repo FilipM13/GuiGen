@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
     setup(
         name='GuiGen',
-        description='Report Pipeline',
+        description='GuiGen',
         author='Filip Matejko',
         version='1.0.0',
         long_description=long_description,
