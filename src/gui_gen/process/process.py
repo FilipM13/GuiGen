@@ -2,12 +2,13 @@ import inspect
 from itertools import zip_longest
 from collections.abc import Callable
 
-from gui_gen.arguments.meta import MetaArg
+from gui_gen.meta.meta import MetaArg, MetaTemplated
 from gui_gen.arguments.generic import Argument
 
 
-class Process:
+class Process(metaclass=MetaTemplated):
     template_html = 'templates/process.jinja2'
+    template_js = 'templates/process_js.jinja2'
 
     def __init__(self, func: Callable, name = None, doc = None):
         self.func = func

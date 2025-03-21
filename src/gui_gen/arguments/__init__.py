@@ -1,3 +1,3 @@
 from .generic import Argument
 
-from . import numeric
+from .numeric import Float, Int

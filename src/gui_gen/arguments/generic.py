@@ -1,4 +1,4 @@
-from .meta import MetaArg
+from gui_gen.meta.meta import MetaArg
 
 
 class Argument(metaclass=MetaArg):
