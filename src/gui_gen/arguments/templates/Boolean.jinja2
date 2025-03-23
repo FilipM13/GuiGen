@@ -1,0 +1,9 @@
+{% extends "templates/generic.jinja2" %}
+{% block input %}
+<input
+name={{argument.name}}
+type="checkbox"
+placeholder="{{argument.__class__.__name__}}"
+{% if argument.checked %} checked{% endif %}
+>
+{% endblock %}

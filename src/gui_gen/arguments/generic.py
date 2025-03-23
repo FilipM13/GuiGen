@@ -3,7 +3,7 @@ from gui_gen.meta.meta import MetaArg
 
 class Argument(metaclass=MetaArg):
     maps_to = str
-    template_html = 'templates/generic.jinja2'
+    template_html = "templates/generic.jinja2"
 
     def __init__(self, name, default):
         self.name = name

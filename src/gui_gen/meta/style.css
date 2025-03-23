@@ -65,3 +65,7 @@
 .content {
     display: none;
 }
+
+.input_div {
+    margin: 2px;
+}
