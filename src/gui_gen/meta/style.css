@@ -24,6 +24,9 @@
     padding: 5px;
     margin: 5px;
 }
+.process_tab .top{
+    cursor: pointer;
+}
 .process_tab h2{
     background-color: #E9A437;
     color:#DB2B39;
@@ -57,4 +60,8 @@
 
 .order_table tr:nth-child(even) {
     background-color: rgba(255, 235, 205, 0.85); /* Slightly lighter for even rows */
+}
+
+.content {
+    display: none;
 }
