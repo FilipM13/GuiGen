@@ -1,0 +1,16 @@
+{% extends "templates/generic.jinja2" %}
+{% block label %}
+<label>
+{{argument.name}}
+</label>
+{% endblock %}
+{% block input %}
+<input
+name={{argument.name}}
+type="number"
+step=1
+placeholder="{{argument.__class__.__name__}}"
+{% if argument.default %} value="{{argument.default}}" {% endif %}
+>
+{% endblock %}
+<br>

@@ -3,6 +3,7 @@ import os
 
 
 class MetaTemplated(type):
+    all_templates = set()
 
     def __new__(cls, cls_name, cls_parents, cls_attrs):
         rv = type.__new__(cls, cls_name, cls_parents, cls_attrs)
@@ -12,12 +13,16 @@ class MetaTemplated(type):
         path = os.sep.join([os.path.dirname(inspect.getfile(rv)), rv.template_html])
         assert os.path.exists(path), f'Template {rv.template_html} does not exist.'
         rv.abs_template_html = path
+
+        # copy extra templates
+        if hasattr(rv, 'templates_extra'):
+            for i, te in enumerate(rv.templates_extra):
+                rv.templates_extra[i] = (
+                    os.sep.join([os.path.dirname(inspect.getfile(rv)), te]),
+                    te
+                )
         
-        # check if js template exists
-        assert hasattr(rv, 'template_js'), f'Class {cls_name} is missing template_js attribute.'
-        path = os.sep.join([os.path.dirname(inspect.getfile(rv)), rv.template_js])
-        assert os.path.exists(path), f'Template {rv.template_js} does not exist.'
-        rv.abs_template_js = path
+        cls.all_templates.add(rv)
 
         return rv
 
@@ -43,3 +48,11 @@ class MetaArg(MetaTemplated):
     @classmethod
     def __getitem__(cls, key):
         return cls.registry[key]
+
+
+class __main__(metaclass=MetaTemplated):
+    template_html = 'templates/__main__.jinja2'
+    templates_extra = [
+        'style.css',
+        'templates/__main__js.jinja2'
+    ]

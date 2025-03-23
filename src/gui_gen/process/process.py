@@ -1,6 +1,8 @@
 import inspect
 from itertools import zip_longest
 from collections.abc import Callable
+import eel
+from datetime import datetime
 
 from gui_gen.meta.meta import MetaArg, MetaTemplated
 from gui_gen.arguments.generic import Argument
@@ -8,7 +10,7 @@ from gui_gen.arguments.generic import Argument
 
 class Process(metaclass=MetaTemplated):
     template_html = 'templates/process.jinja2'
-    template_js = 'templates/process_js.jinja2'
+    process_registry = dict()
 
     def __init__(self, func: Callable, name = None, doc = None):
         self.func = func
@@ -16,6 +18,7 @@ class Process(metaclass=MetaTemplated):
         self.name = name if name else func.__name__
         self.doc = doc if doc else func.__doc__
         self.read_function()
+        self.process_registry[self.func.__name__] = self
         print(f'Process {self.name} registered successfully.')
 
     def read_function(self):
@@ -28,16 +31,25 @@ class Process(metaclass=MetaTemplated):
                 fillvalue=None
             )))
             for name, default in args:
-                type_hint = spec.annotations.get(name)
-                self.args[name] = (
-                    type_hint if type_hint else Argument, 
-                    default
-                )
+                type_hint = spec.annotations.get(name, Argument)
+                self.args[name] = type_hint(name=name, default=default)
         pass
 
     def execute_process(self, args):
         values = dict()
+        args = {a['name']: a['value'] for a in args}
         for name, val in args.items():
-            values[name] = self.args[name][0].map(val)
+            values[name] = self.args[name].map(val)
         rv = self.func(**values)
+    
+        eel.receive_msg(
+            self.func.__name__, 
+            datetime.now().strftime("%Y/%m/%d %H:%M:%S"), 
+            str(rv)
+        )
+
         return rv
+
+    @classmethod
+    def __class_getitem__(cls, key):
+        return cls.process_registry[key]

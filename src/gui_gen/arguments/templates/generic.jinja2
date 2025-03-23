@@ -1,6 +1,13 @@
+{% block label %}
 <label>
-{{arg.name}}
+{{argument.name}}
 </label>
-<input>
-{{arg.default}}
-</input>
+{% endblock %}
+{% block input %}
+<input
+name={{argument.name}}
+placeholder="{{argument.__class__.__name__}}"
+{% if argument.default %} value="{{argument.default}}" {% endif %}
+>
+{% endblock %}
+<br>
