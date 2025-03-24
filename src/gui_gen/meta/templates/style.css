@@ -1,10 +1,14 @@
 /*YES I COULD HAVE USED BOOTSTRAP...*/
 :root{
-    background-color: #29335C;
-    font-family: Arial, sans-serif;
+    font-family: {{app.font}};
+    --background-col: {{app.background_colour}};
+    --primary-col: {{app.primary_colour}};
+    --secodnary-col: {{app.secondary_colour}};
+    --accent-col: {{app.accent_colour}};
+    background-color: var(--background-col);
 }
 .app_name, .order_header{
-    color: white;
+    color: var(--accent-col);
     text-align: center;
 }
 .output{
@@ -20,7 +24,7 @@
     color: greenyellow;
 }
 .process_tab{
-    background-color: rgba(255, 235, 205);
+    background-color: var(--secodnary-col);
     padding: 5px;
     margin: 5px;
 }
@@ -28,12 +32,13 @@
     cursor: pointer;
 }
 .process_tab h2{
-    background-color: #E9A437;
-    color:#DB2B39;
+    background-color: var(--primary-col);
+    color:var(--accent-col);
     text-align: center;
 }
-.process_tab h2 .process_version{
-    color:#29335C;
+.process_tab small{
+    font-size: small;
+    color: var(--accent-col);
 }
 .process_tab .run{
     font-weight: bold;
@@ -42,7 +47,7 @@
 .order_table {
     width: 100%;
     border-collapse: collapse;
-    background-color: rgba(255, 235, 205, 1); /* Light background color */
+    background-color: var(--secodnary-col); /* Light background color */
     font-size: 14px;
     text-align: left;
 }
@@ -53,13 +58,13 @@
 }
 
 .order_table th {
-    background-color: #E9A437; /* Header row color */
-    color: #DB2B39; /* Header text color */
+    background-color: var(--primary-col); /* Header row color */
+    color: var(--accent-col); /* Header text color */
     text-transform: uppercase;
 }
 
 .order_table tr:nth-child(even) {
-    background-color: rgba(255, 235, 205, 0.85); /* Slightly lighter for even rows */
+    background-color: var(--secodnary-col); /* Slightly lighter for even rows */
 }
 
 .content {

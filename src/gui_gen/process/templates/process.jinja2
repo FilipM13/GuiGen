@@ -1,6 +1,6 @@
 <div class="process_tab">
     <div class="top" onclick="toggleContent(this)">
-        <h2>{{ process.name }}</h2>
+        <h2>{{ process.name }}<br><small>{{ process.func.__name__}}</small></h2>
     </div>
     <div class="content">
         {% if process.doc %}

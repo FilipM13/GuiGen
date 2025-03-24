@@ -10,11 +10,16 @@ class App(metaclass=MetaTemplated):
     template_html = "templates/app.jinja2"
     template_js = "templates/app_js.jinja2"
 
-    def __init__(self, processes, name=None, doc=None, gui_directory="GUI/"):
+    def __init__(self, processes, name=None, doc=None, gui_directory="GUI/", background_colour='#29335C', primary_colour='#E9A437', secondary_colour='rgba(255, 235, 205)', accent_colour='#DB2B39', font='Arial, sans-serif'):
         self.processes = processes
         self.name = name
         self.doc = doc
         self.gui_directory = gui_directory
+        self.background_colour = background_colour
+        self.primary_colour = primary_colour
+        self.secondary_colour = secondary_colour
+        self.accent_colour = accent_colour
+
 
     def build(self):
         # copy all templates to one directory
@@ -35,10 +40,16 @@ class App(metaclass=MetaTemplated):
 
         # generate gui
         environment = Environment(loader=FileSystemLoader(self.gui_directory))
+        # html
         template = environment.get_template("templates/__main__.jinja2")
         rendered_gui = template.render(app=self)
         rendered_gui = bs4.BeautifulSoup(rendered_gui, "lxml").prettify()
         with open(self.gui_directory + "GUI.html", "w", encoding="utf-8") as gui:
+            gui.write(rendered_gui)
+        # css
+        template = environment.get_template("templates/style.css")
+        rendered_gui = template.render(app=self)
+        with open(self.gui_directory + "style.css", "w", encoding="utf-8") as gui:
             gui.write(rendered_gui)
 
         # run app

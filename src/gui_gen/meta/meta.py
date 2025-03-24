@@ -9,10 +9,10 @@ class MetaTemplated(type):
         rv = type.__new__(cls, cls_name, cls_parents, cls_attrs)
 
         # check if template file exists
-        if not hasattr(rv, "abs_template_html"):
-            assert hasattr(
-                rv, "template_html"
-            ), f"Class {cls_name} is missing template_html attribute."
+        assert hasattr(
+            rv, "template_html"
+        ), f"Class {cls_name} is missing template_html attribute."
+        if 'template_html' in cls_attrs.keys():
             path = os.sep.join([os.path.dirname(inspect.getfile(rv)), rv.template_html])
             assert os.path.exists(path), f"Template {path} does not exist."
             rv.abs_template_html = path
@@ -57,4 +57,4 @@ class MetaArg(MetaTemplated):
 
 class __main__(metaclass=MetaTemplated):
     template_html = "templates/__main__.jinja2"
-    templates_extra = ["style.css", "templates/__main__js.jinja2"]
+    templates_extra = ["templates/style.css", "templates/__main__js.jinja2"]
