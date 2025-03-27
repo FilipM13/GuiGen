@@ -15,93 +15,120 @@ Will it fail you once upon a time? Maybe.<br>
 Was it "tHorOUgHly TEstEd"? Hell nah. <br>
 Is it easy to use? Can it gather all your small scripts in one elegant GUI? Will it save you from going insane while trying to center a div? Very much yes, sir!<br>
 
-## How to...
-### ... create App?
+## Example use case 1
 ```python
-app = App()
-# or
-app = App(
-    name="my awesome app",
-    version="2.1.37",
-    description="This is my app, like for real dude man.",
-    path="some/where"  # where to generate GUI.html file
+from gui_gen import App, Process, arguments
+from time import sleep
+from datetime import datetime
+
+
+def my_proc(
+    a1: arguments.Argument,
+    a2: arguments.Float,
+    a3: arguments.Int,
+    a4 = 1
+):
+    sleep(10)
+    return datetime.now()
+
+pr = Process(
+    my_proc
 )
-```
-### ... add Process?
-```python
-def my_func():
-    """
-    You will see this is GUI.
-    """
-    pass
 
-proc = Process(my_func)
-# or
-proc = Process(
-    function=my_func,
-    name="my awesome process",
-    version="1.0.0",
-    description="It does stuff.",
+class CustomRegex(arguments.Regex):
+    pattern = r'[\d]*'
+
+def my_proc2(
+    a1: arguments.Argument,
+    a2: arguments.Float,
+    text: CustomRegex,
+    ch1: arguments.Choice,
+    ch2: arguments.Choice = [1, 2, 3],
+    d: arguments.Date = datetime(2021, 3, 7).date(),
+    dt: arguments.DateTime = datetime(2021, 1, 12, 10, 21),
+    a3: arguments.Int = 2,
+    a4: arguments.Boolean = False,
+    a5: arguments.Boolean = True
+):
+    '''
+    stuff
+    '''
+    print(ch1)
+    print(ch2)
+    return datetime.now()
+
+pr2 = Process(
+    my_proc2,
+    name='Custom name!'
 )
-# and then
-app.add_process(proc)
-```
-### ... hint types for Process?
-```python
-def sample_function(
-        a1: int,
-        a2: float,
-        a3: str,
-        a4: bool,
-        # more will be added later
-    ):
-    pass
+
+a = App(
+    processes=[pr, pr2],
+    primary_colour='navy',
+    secondary_colour='darkgray',
+    accent_colour='lime',
+    background_colour='black'
+)
+
+a.build()
 ```
 
-### ... add custom massages in Process?
-It might be stupid but you can create custom messages in process by turning it into generator function like this:
-```python
-def f_with_messages():
-    # do some stuff
-    x = 1
-    yield f'the value of x is {x}'
-    sleep(15)  # very time consuming process
-    yield 'That was a lot of work.'
-    yield f'Anyway that\'s the result: {x + 1}'
+### HTML:
+[Preview](https://html-preview.github.io/?url=https://github.com/FilipM13/GuiGen/blob/main/GUI.html)<br>
+[File itself](https://github.com/FilipM13/GuiGen/blob/main/GUI.html)
+
+## Example use case 2 (creating custom jinja template)
+Python:
 ```
+from gui_gen import App, Process, arguments
+from datetime import datetime
 
-### ... launch App?
-```python
-app.launch()
+class CustomRegex(arguments.Regex):
+    pattern = r'[\d]*'
+    template_html = 'CustomRegex.jinja2'  # path must be in the same location as class definition:
+    # folder/
+    #    my_code_with_class.py  # <- template_html = 'template.jinja2'
+    #    template.jinja2
+    # or
+    # folder/
+    #    my_code_with_class.py  # <- template_html = 'stuff/template.jinja2'
+    #    stuff/
+    #       template.jinja2
+
+def my_proc2(
+    text: CustomRegex,
+    ch1: arguments.Choice = [1,2,3,4],
+):
+    '''
+    stuff
+    '''
+    return datetime.now()
+
+pr2 = Process(
+    my_proc2,
+    name='Custom name!'
+)
+
+a = App(
+    processes=[pr2],
+    primary_colour='navy',
+    secondary_colour='darkgray',
+    accent_colour='lime',
+    background_colour='black'
+)
+
+a.build()
 ```
-
-## Full Example
-### Python:
-```python
-from gui_gen import App, Process
-
-def sample_function(
-        a1: int,
-        a2: float,
-        a3: str,
-        a4: bool,
-        # more will be added later
-    ):
-    pass
-
-def f_with_messages():
-    # do some stuff
-    x = 1
-    yield f'the value of x is {x}'
-    sleep(15)  # very time consuming process
-    yield 'That was a lot of work.'
-    yield f'Anyway that\'s the result: {x + 1}'
-
-app = App()
-app.add_process(Process(sample_function))
-app.add_process(Process(f_with_messages))
-
-app.launch()
+Jinja template:
+```Jinja
+{% extends "templates/generic.jinja2" %}
+{% block input %}
+<input
+name={{argument.name}}
+type="text"
+placeholder="THIS IS CUSTOMIZATION FOR {{argument.__class__.__name__}}"
+>
+{% endblock %}
 ```
 
 ### HTML:
