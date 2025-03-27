@@ -7,7 +7,7 @@ The rules are simple:
 1. Make one function for each process you want to have.
 2. Register this function as `Process` class.
 3. Register all instances of `Process` in `App` class instance.
-4. Use `app.launch()` and after a little bit of waiting a GUI will pop up!
+4. Use `app.build()` and after a little bit of waiting a GUI will pop up!
 
 Is it slow? Perhaps.<br>
 Does it work for complex apps? Nope.<br>
