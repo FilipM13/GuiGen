@@ -1,0 +1,15 @@
+<div class="input_div">
+    {% block label %}
+    <label>
+    {{argument.name}}
+    </label>
+    {% endblock %}
+    {% block input %}
+    <input
+    name={{argument.name}}
+    placeholder="{{argument.__class__.__name__}}"
+    {% if argument.default %} value="{{argument.default}}" {% endif %}
+    >
+    {% endblock %}
+    <br>
+</div>

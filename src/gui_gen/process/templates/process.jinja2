@@ -1,0 +1,19 @@
+<div class="process_tab">
+    <div class="top" onclick="toggleContent(this)">
+        <h2>{{ process.name }}<br><small>{{ process.func.__name__}}</small></h2>
+    </div>
+    <div class="content">
+        {% if process.doc %}
+            <p class="process_description">{{process.doc}}</p>
+        {% endif %}
+        <form id="form_{{ process.func.__name__}}">
+            {% if process.args %} <h3>Input:</h3> {% endif %}
+            {% for argument in process.args.values() %}
+                {% include argument.template_html %}
+            {% endfor %}
+            <input class="run" onclick="request_process('{{process.func.__name__}}')" type="button" value="Submit" />
+        </form>
+        <h3>Output:</h3>
+        <p class="output" id="output_{{process.func.__name__}}"></p>
+    </div>
+</div>

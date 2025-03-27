@@ -1,0 +1,76 @@
+/*YES I COULD HAVE USED BOOTSTRAP...*/
+:root{
+    font-family: {{app.font}};
+    --background-col: {{app.background_colour}};
+    --primary-col: {{app.primary_colour}};
+    --secodnary-col: {{app.secondary_colour}};
+    --accent-col: {{app.accent_colour}};
+    background-color: var(--background-col);
+}
+.app_name, .order_header{
+    color: var(--accent-col);
+    text-align: center;
+}
+.output{
+    font-family: "Consolas";
+    background-color: rgb(99, 99, 99);
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+}
+.timestamp{
+    font-weight: lighter;
+    color: greenyellow;
+}
+.process_tab{
+    background-color: var(--secodnary-col);
+    padding: 5px;
+    margin: 5px;
+}
+.process_tab .top{
+    cursor: pointer;
+}
+.process_tab h2{
+    background-color: var(--primary-col);
+    color:var(--accent-col);
+    text-align: center;
+}
+.process_tab small{
+    font-size: small;
+    color: var(--accent-col);
+}
+.process_tab .run{
+    font-weight: bold;
+    padding: 2px;
+}
+.order_table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--secodnary-col); /* Light background color */
+    font-size: 14px;
+    text-align: left;
+}
+
+.order_table th, td {
+    border: 1px solid #ccc; /* Light border color for readability */
+    padding: 8px;
+}
+
+.order_table th {
+    background-color: var(--primary-col); /* Header row color */
+    color: var(--accent-col); /* Header text color */
+    text-transform: uppercase;
+}
+
+.order_table tr:nth-child(even) {
+    background-color: var(--secodnary-col); /* Slightly lighter for even rows */
+}
+
+.content {
+    display: none;
+}
+
+.input_div {
+    margin: 2px;
+}

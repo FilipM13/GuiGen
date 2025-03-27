@@ -1,0 +1,8 @@
+{% extends "templates/generic.jinja2" %}
+{% block input %}
+<select name={{argument.name}}>
+{% for option in argument.get_options() %}
+    <option value="{{option}}">{{option}}</option>
+{% endfor %}
+</select>
+{% endblock %}

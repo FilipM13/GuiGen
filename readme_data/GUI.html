@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   My App
+  </title>
+  <meta content="" name="description"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="style.css" rel="stylesheet"/>
+  <script src="/eel.js" type="text/javascript">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
+  <script async="" defer="">
+   eel.expose(receive_msg);
+            function receive_msg(process, ts, msg){
+                output = document.getElementById("output_"+process);
+                output.innerHTML += '<span class="timestamp">' + ts + ': </span>' + msg + '<br>';
+            }
+  </script>
+ </head>
+ <body>
+  <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+  <h1 class="app_name">
+   My App
+  </h1>
+  <div class="process_tab">
+   <div class="top" onclick="toggleContent(this)">
+    <h2>
+     my_proc
+     <br/>
+     <small>
+      my_proc
+     </small>
+    </h2>
+   </div>
+   <div class="content">
+    <form id="form_my_proc">
+     <h3>
+      Input:
+     </h3>
+     <div class="input_div">
+      <label>
+       a1
+      </label>
+      <input name="a1" placeholder="Argument"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       a2
+      </label>
+      <input name="a2" placeholder="Float" step="1" type="number"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       a3
+      </label>
+      <input name="a3" placeholder="Int" step="1" type="number"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       a4
+      </label>
+      <input name="a4" placeholder="Argument" value="1"/>
+      <br/>
+     </div>
+     <input class="run" onclick="request_process('my_proc')" type="button" value="Submit"/>
+    </form>
+    <h3>
+     Output:
+    </h3>
+    <p class="output" id="output_my_proc">
+    </p>
+   </div>
+  </div>
+  <div class="process_tab">
+   <div class="top" onclick="toggleContent(this)">
+    <h2>
+     Custom name!
+     <br/>
+     <small>
+      my_proc2
+     </small>
+    </h2>
+   </div>
+   <div class="content">
+    <p class="process_description">
+     stuff
+    </p>
+    <form id="form_my_proc2">
+     <h3>
+      Input:
+     </h3>
+     <div class="input_div">
+      <label>
+       a1
+      </label>
+      <input name="a1" placeholder="Argument"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       a2
+      </label>
+      <input name="a2" placeholder="Float" step="1" type="number"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       text
+      </label>
+      <input name="text" placeholder="CustomRegex" type="text"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       ch1
+      </label>
+      <select name="ch1">
+      </select>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       ch2
+      </label>
+      <select name="ch2">
+       <option value="1">
+        1
+       </option>
+       <option value="2">
+        2
+       </option>
+       <option value="3">
+        3
+       </option>
+      </select>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       d
+      </label>
+      <input name="d" placeholder="Date" type="date" value="2021-03-07"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       dt
+      </label>
+      <input name="dt" placeholder="DateTime" type="datetime-local" value="2021-01-12T10:21"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       a3
+      </label>
+      <input name="a3" placeholder="Int" step="1" type="number" value="2"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       a4
+      </label>
+      <input name="a4" placeholder="Boolean" type="checkbox"/>
+      <br/>
+     </div>
+     <div class="input_div">
+      <label>
+       a5
+      </label>
+      <input checked="" name="a5" placeholder="Boolean" type="checkbox"/>
+      <br/>
+     </div>
+     <input class="run" onclick="request_process('my_proc2')" type="button" value="Submit"/>
+    </form>
+    <h3>
+     Output:
+    </h3>
+    <p class="output" id="output_my_proc2">
+    </p>
+   </div>
+  </div>
+  <h2 class="order_header">
+   Ordered jobs
+  </h2>
+  <table class="order_table">
+   <thead>
+    <tr>
+     <th>
+      Job
+     </th>
+     <th>
+      Arguments
+     </th>
+     <th>
+      Time Stamp
+     </th>
+    </tr>
+   </thead>
+   <tbody id="orders">
+   </tbody>
+  </table>
+ </body>
+ <script type="text/javascript">
+  // make tabs collapsible
+function toggleContent(header){
+    const content = header.nextElementSibling;
+    if (content.style.display === 'none'){
+        content.style.display = "block";
+    } else {
+        content.style.display = "none";
+    }
+}
+
+// send process request
+function request_process(name){
+    // get form data
+    args = $('#form_'+name).serializeArray()
+    // send request
+    eel.request_process(
+        process=name,
+        args=args
+    )();
+
+    // create request table entry
+    table = document.getElementById("orders");
+    row = table.insertRow(0);
+    // process name
+    c1 = row.insertCell(0);
+    c1.innerHTML = name;
+    // process arguments
+    c2 = row.insertCell(1);
+    c2.innerHTML = JSON.stringify(args);
+    // request time stamp
+    c3 = row.insertCell(2);
+    var now = new Date();
+    [y, M, d, h, m, s] = [
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDay(),
+        now.getHours(),
+        now.getMinutes(),
+        now.getSeconds(),
+    ];
+    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+};
+
+
+// expose message receiving function
+eel.expose(receive_msg);
+    function receive_msg(process, ts, msg){
+        output = document.getElementById("output_"+process);
+        output.innerHTML += '<span class="timestamp">' + ts + ': </span>' + msg + '<br>';
+    }
+ </script>
+</html>

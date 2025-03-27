@@ -1,0 +1,50 @@
+// make tabs collapsible
+function toggleContent(header){
+    const content = header.nextElementSibling;
+    if (content.style.display === 'none'){
+        content.style.display = "block";
+    } else {
+        content.style.display = "none";
+    }
+}
+
+// send process request
+function request_process(name){
+    // get form data
+    args = $('#form_'+name).serializeArray()
+    // send request
+    eel.request_process(
+        process=name,
+        args=args
+    )();
+
+    // create request table entry
+    table = document.getElementById("orders");
+    row = table.insertRow(0);
+    // process name
+    c1 = row.insertCell(0);
+    c1.innerHTML = name;
+    // process arguments
+    c2 = row.insertCell(1);
+    c2.innerHTML = JSON.stringify(args);
+    // request time stamp
+    c3 = row.insertCell(2);
+    var now = new Date();
+    [y, M, d, h, m, s] = [
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDay(),
+        now.getHours(),
+        now.getMinutes(),
+        now.getSeconds(),
+    ];
+    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+};
+
+
+// expose message receiving function
+eel.expose(receive_msg);
+    function receive_msg(process, ts, msg){
+        output = document.getElementById("output_"+process);
+        output.innerHTML += '<span class="timestamp">' + ts + ': </span>' + msg + '<br>';
+    }

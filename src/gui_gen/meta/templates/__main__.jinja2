@@ -10,8 +10,9 @@
         <title>{% if app.name %} {{app.name}} {% else %} My App {% endif %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="/eel.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script async defer>
 
             eel.expose(receive_msg);
@@ -20,13 +21,7 @@
                 output.innerHTML += '<span class="timestamp">' + ts + ': </span>' + msg + '<br>';
             }
 
-            {% for process in app.processes %}
-                {% include "process.js" %}
-            {% endfor %}
         </script>
-        <style>
-            {% include "style.css" %}
-        </style>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,13 +29,12 @@
         <![endif]-->
         <h1 class="app_name">
             {% if app.name %} {{app.name}} {% else %} My App {% endif %}
-            {% if app.version %} <span class="app_version">{{app.version}}</span> {% endif %}
         </h1>
         {% if app.description %} 
             <p>{{app.description}}</p>
         {% endif %}
         {% for process in app.processes %}
-            {% include "tab.html" %}
+            {% include process.template_html %}
         {% endfor %}
         <h2 class="order_header">Ordered jobs</h2>
         <table class="order_table">
@@ -56,4 +50,7 @@
             </tbody>
         </table>
     </body>
+    <script type="text/javascript">
+    {% include "templates/__main__js.jinja2" %}
+    </script>
 </html>
