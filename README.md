@@ -74,8 +74,8 @@ a.build()
 ```
 
 ### HTML:
-[Preview](https://html-preview.github.io/?url=https://github.com/FilipM13/GuiGen/blob/main/GUI.html)<br>
-[File itself](https://github.com/FilipM13/GuiGen/blob/main/GUI.html)
+[Preview](https://html-preview.github.io/?url=https://github.com/FilipM13/GuiGen/blob/main/readme_data/GUI.html)<br>
+[File itself](https://github.com/FilipM13/GuiGen/blob/main/readme_data/GUI.html)
 
 ## Example use case 2 (creating custom jinja template)
 Python:
@@ -132,5 +132,5 @@ placeholder="THIS IS CUSTOMIZATION FOR {{argument.__class__.__name__}}"
 ```
 
 ### HTML:
-[Preview](https://html-preview.github.io/?url=https://github.com/FilipM13/GuiGen/blob/main/GUI.html)<br>
-[File itself](https://github.com/FilipM13/GuiGen/blob/main/GUI.html)
+[Preview](https://html-preview.github.io/?url=https://github.com/FilipM13/GuiGen/blob/main/readme_data/GUI_2.html)<br>
+[File itself](https://github.com/FilipM13/GuiGen/blob/main/readme_data/GUI_2.html)
