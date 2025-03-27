@@ -1,0 +1,9 @@
+{% extends "templates/generic.jinja2" %}
+{% block input %}
+<input
+name={{argument.name}}
+type="date"
+placeholder="{{argument.__class__.__name__}}"
+{% if argument.default %}value={{ argument.format_default() }}{% endif %}
+>
+{% endblock %}
