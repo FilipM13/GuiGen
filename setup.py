@@ -22,6 +22,6 @@ if __name__ == '__main__':
         package_dir={'': 'src'},
         python_requires='>=3.9',
         install_requires=reqs,
-        package_data={"": ['.html', '.js', '.css']},
-        
+        package_data={"": ['**/*.html', '**/*.js', '**/*.css', '**/*.jinja2']},
+        include_package_data=True
     )
