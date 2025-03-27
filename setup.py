@@ -11,7 +11,7 @@ if __name__ == '__main__':
         name='GuiGen',
         description='GuiGen',
         author='Filip Matejko',
-        version='1.0.0',
+        version='1.0.1',
         long_description=long_description,
         long_description_content_type="text/markdown",
         url='https://github.com/FilipM13/GuiGen',
@@ -22,6 +22,6 @@ if __name__ == '__main__':
         package_dir={'': 'src'},
         python_requires='>=3.9',
         install_requires=reqs,
-        package_data={"": ['.html', '.js', '.css']},
-        
+        package_data={"": ['**/*.html', '**/*.js', '**/*.css', '**/*.jinja2']},
+        include_package_data=True
     )
