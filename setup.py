@@ -11,7 +11,7 @@ if __name__ == '__main__':
         name='GuiGen',
         description='GuiGen',
         author='Filip Matejko',
-        version='1.0.0',
+        version='1.0.1',
         long_description=long_description,
         long_description_content_type="text/markdown",
         url='https://github.com/FilipM13/GuiGen',
