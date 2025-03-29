@@ -44,7 +44,7 @@ class Process(metaclass=MetaTemplated):
         for name in spec.args:
             if name not in args.keys():
                 values[name] = self.args[name].default
-        
+
         rv = self.func(**values)
         eel.receive_msg(
             self.func.__name__, datetime.now().strftime("%Y/%m/%d %H:%M:%S"), str(rv)

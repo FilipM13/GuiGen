@@ -48,3 +48,11 @@ eel.expose(receive_msg);
         output = document.getElementById("output_"+process);
         output.innerHTML += '<span class="timestamp">' + ts + ': </span>' + msg + '<br>';
     }
+
+// getting path to file
+async function getFilePath(input) {
+    console.log(input);
+    let path = await eel.select_file()();
+    console.log(input.previousSibling.previousSibling)
+    input.previousSibling.previousSibling.value = path;
+};

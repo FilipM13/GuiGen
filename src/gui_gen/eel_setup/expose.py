@@ -1,4 +1,5 @@
 import eel
+import easygui
 
 from gui_gen.process.process import Process
 
@@ -8,3 +9,10 @@ from gui_gen.process.process import Process
 def request_process(name, args):
     process = Process[name]
     process.execute_process(args)
+
+
+# getting path to file
+@eel.expose
+def select_file():
+    path = easygui.fileopenbox()
+    return path

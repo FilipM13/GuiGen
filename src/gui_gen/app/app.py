@@ -10,7 +10,18 @@ class App(metaclass=MetaTemplated):
     template_html = "templates/app.jinja2"
     template_js = "templates/app_js.jinja2"
 
-    def __init__(self, processes, name=None, doc=None, font='"Noto Sans Mono", monospace', gui_directory="GUI/", background_colour='#29335C', primary_colour='#E9A437', secondary_colour='rgba(255, 235, 205)', accent_colour='#DB2B39'):
+    def __init__(
+        self,
+        processes,
+        name=None,
+        doc=None,
+        font='"Noto Sans Mono", monospace',
+        gui_directory="GUI/",
+        background_colour="#29335C",
+        primary_colour="#E9A437",
+        secondary_colour="rgba(255, 235, 205)",
+        accent_colour="#DB2B39",
+    ):
         self.processes = processes
         self.name = name
         self.doc = doc
@@ -20,7 +31,6 @@ class App(metaclass=MetaTemplated):
         self.secondary_colour = secondary_colour
         self.accent_colour = accent_colour
         self.font = font
-
 
     def build(self):
         # copy all templates to one directory
