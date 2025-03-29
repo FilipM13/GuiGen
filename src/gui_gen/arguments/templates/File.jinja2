@@ -1,0 +1,9 @@
+{% extends "templates/generic.jinja2" %}
+{% block input %}
+<input
+name={{argument.name}}
+type="text"
+readonly
+>
+<button type="button" onclick="getFilePath(this)">Select File</button>
+{% endblock %}

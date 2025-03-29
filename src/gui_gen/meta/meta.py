@@ -12,7 +12,7 @@ class MetaTemplated(type):
         assert hasattr(
             rv, "template_html"
         ), f"Class {cls_name} is missing template_html attribute."
-        if 'template_html' in cls_attrs.keys():
+        if "template_html" in cls_attrs.keys():
             path = os.sep.join([os.path.dirname(inspect.getfile(rv)), rv.template_html])
             assert os.path.exists(path), f"Template {path} does not exist."
             rv.abs_template_html = path
