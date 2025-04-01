@@ -4,6 +4,6 @@ jobs:
     mypy:
         runs-on: ubuntu-latests
         steps:
-            - name: do thing 1
+            - name: 'do thing 1'
               run: echo "eat my shorts"
 
