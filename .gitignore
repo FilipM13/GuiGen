@@ -1,4 +1,6 @@
 **/__pycache__/
 **/*.egg-info/
 venv
+venv2
+sample.py
 .egg-info
