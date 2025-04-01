@@ -1,0 +1,9 @@
+name: code quality
+on: push
+jobs:
+  mypy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: do thing 1
+        run: echo "pushing stuff, huh?"
+
