@@ -4,6 +4,14 @@ jobs:
   mypy:
     runs-on: ubuntu-latest
     steps:
-      - name: do thing 1
-        run: echo "pushing stuff, huh?"
+        - name: do thing 1
+          run: |
+            echo 'this'
+            echo 'stuff'
+            echo 'works'
+        - name: do thing 2
+          run: |
+            echo 'this'
+            echo 'stuff'
+            echo 'works'
 
