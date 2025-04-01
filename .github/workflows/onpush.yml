@@ -15,5 +15,5 @@ jobs:
             echo 'stuff'
             echo 'works'
         - name: get code
-          uses: action/checkout@v3
+          uses: action/checkout@v4
 
