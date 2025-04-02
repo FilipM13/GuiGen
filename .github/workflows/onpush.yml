@@ -37,3 +37,12 @@ jobs:
         with:
           name: log-maybe
           path: logs
+  use-test-art:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: log-maybe
+      - name: intall dependencies
+        run: echo "using artifacts"
