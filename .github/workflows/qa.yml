@@ -1,4 +1,4 @@
-name: code quality
+name: random wf
 on:
   push:
     branches: [main]

@@ -1,4 +1,4 @@
-name: code quality on push
+name: code quality
 on: [push, workflow_dispatch]
 jobs:
   formatting:
