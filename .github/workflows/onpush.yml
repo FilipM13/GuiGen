@@ -26,3 +26,5 @@ jobs:
         - name: do thing after
           run: |
             echo 'subsequent job cool and stuff'
+        - name: make context
+          run: echo '${{ toJson(github) }}'
