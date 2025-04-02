@@ -1,5 +1,5 @@
 import eel
-import easygui
+import easygui  # type: ignore[import-untyped]
 
 from gui_gen.process.process import Process
 

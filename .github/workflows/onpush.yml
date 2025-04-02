@@ -1,30 +1,34 @@
 name: code quality on push
 on: [push, workflow_dispatch]
 jobs:
-  mypy:
+  formatting:
     runs-on: ubuntu-latest
     steps:
-        - name: do thing 1
-          run: |
-            echo 'this'
-            echo 'stuff'
-            echo 'works'
-        - name: do thing 2
-          run: |
-            echo 'this'
-            echo 'stuff'
-            echo 'works'
-        - name: get code
-          uses: actions/checkout@v4
-        - uses: actions/setup-python@v5
-          with:
-            python-version: '3.13'
-  papaj:
-    needs: mypy
+      - uses: actions/checkout@v4
+      - name: python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: intall dependencies
+        run: |
+          pip install .
+          pip install -r requirements_dev.txt
+      - name: test code
+        run: |
+          python -m black --check src
+          python -m mypy src
+  test:
+    name: test the code
     runs-on: ubuntu-latest
     steps:
-        - name: do thing after
-          run: |
-            echo 'subsequent job cool and stuff'
-        - name: make context
-          run: echo '${{ toJson(github) }}'
+      - uses: actions/checkout@v4
+      - name: python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: intall dependencies
+        run: |
+          pip install .
+          pip install -r requirements_dev.txt
+      - name: test code
+        run: python -m pytest ./tests

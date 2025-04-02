@@ -1,6 +1,7 @@
 import inspect
 from itertools import zip_longest
 from collections.abc import Callable
+from typing import Any
 import eel
 from datetime import datetime
 
@@ -10,7 +11,7 @@ from gui_gen.arguments.generic import Argument
 
 class Process(metaclass=MetaTemplated):
     template_html = "templates/process.jinja2"
-    process_registry = dict()
+    process_registry: dict[str, Process] = dict()
 
     def __init__(self, func: Callable, name=None, doc=None):
         self.func = func
