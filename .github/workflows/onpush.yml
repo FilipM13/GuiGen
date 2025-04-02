@@ -20,6 +20,8 @@ jobs:
   test:
     name: test the code
     runs-on: ubuntu-latest
+    outputs:
+      log-file: ${{ steps.important.outputs.stuff }}
     steps:
       - uses: actions/checkout@v4
       - name: python setup
@@ -37,6 +39,9 @@ jobs:
         with:
           name: log-maybe
           path: logs
+      - name: make output
+        id: important
+        run: find logs/*.txt -type f -execdir echo 'stuff={}' >> $GITHUB_OUTPUT
   use-test-art:
     needs: test
     runs-on: ubuntu-latest
@@ -45,4 +50,6 @@ jobs:
         with:
           name: log-maybe
       - name: intall dependencies
-        run: echo "using artifacts"
+        run: |
+          echo "using artifacts"
+          echo ${{ needs.test.outputs.log-file }}
