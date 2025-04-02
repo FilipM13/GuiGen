@@ -49,7 +49,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: log-maybe
-      - name: intall dependencies
+      - name: use the thing
         run: |
           echo "using artifacts"
           echo ${{ needs.test.outputs.log-file }}
