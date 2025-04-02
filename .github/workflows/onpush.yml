@@ -13,7 +13,7 @@ jobs:
         run: |
           pip install .
           pip install -r requirements_dev.txt
-      - name: test code
+      - name: check black and mypy
         run: |
           python -m black --check src
           python -m mypy src
