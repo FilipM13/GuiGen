@@ -33,7 +33,7 @@ jobs:
       - name: test code
         run: python -m pytest ./tests
       - name: test artifacts
-        uses: actions/upload-artifacts@v3
+        uses: actions/upload-artifact@v4
         with:
           name: log-maybe
           path: logs
