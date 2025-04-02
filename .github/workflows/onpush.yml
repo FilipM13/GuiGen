@@ -32,3 +32,8 @@ jobs:
           pip install -r requirements_dev.txt
       - name: test code
         run: python -m pytest ./tests
+      - name: test artifacts
+        uses: actions/upload-artifacts@v3
+        with:
+          name: log-maybe
+          path: logs
