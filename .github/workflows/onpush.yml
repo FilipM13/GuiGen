@@ -41,7 +41,7 @@ jobs:
           path: logs
       - name: make output
         id: important
-        run: find logs/*.txt -type f -execdir echo 'stuff={}' >> $GITHUB_OUTPUT
+        run: find logs/*.txt -type f -execdir echo 'stuff={}' >> $GITHUB_OUTPUT ';'
   use-test-art:
     needs: test
     runs-on: ubuntu-latest
