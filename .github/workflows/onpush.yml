@@ -27,6 +27,10 @@ jobs:
       log-file: ${{ steps.important.outputs.stuff }}
     steps:
       - uses: actions/checkout@v4
+      - name: dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements_dev.txt
       - name: test code
         run: python -m pytest tests
       - name: test artifacts
