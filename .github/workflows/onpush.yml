@@ -19,6 +19,7 @@ jobs:
           python -m black --check src
           python -m mypy src
   test:
+    needs: formatting
     name: test the code
     runs-on: ubuntu-latest
     outputs:
