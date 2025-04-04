@@ -10,10 +10,9 @@ jobs:
         with:
           python-version: '3.10'
           cache: 'pip'
-      - name: intall dependencies
-        run: |
-          pip install .
-          pip install -r requirements_dev.txt
+          cache-dependency-path: |
+            requirements.txt
+            requirements_dev.txt
       - name: check black and mypy
         run: |
           python -m black --check src
@@ -26,14 +25,6 @@ jobs:
       log-file: ${{ steps.important.outputs.stuff }}
     steps:
       - uses: actions/checkout@v4
-      - name: python setup
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-      - name: intall dependencies
-        run: |
-          pip install .
-          pip install -r requirements_dev.txt
       - name: test code
         run: python -m pytest tests
       - name: test artifacts
