@@ -13,6 +13,10 @@ jobs:
           cache-dependency-path: |
             requirements.txt
             requirements_dev.txt
+      - name: dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements_dev.txt
       - name: check black and mypy
         run: |
           python -m black --check src
