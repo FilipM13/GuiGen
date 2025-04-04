@@ -13,8 +13,8 @@ jobs:
           cache-dependency-path: 'requirements*.txt'
       - name: dependencies
         run: |
-          pip install -r requirements.txt
-          pip install -r requirements_dev.txt
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements_dev.txt
       - name: check black and mypy
         run: |
           python -m black --check src
@@ -29,8 +29,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: dependencies
         run: |
-          pip install -r requirements.txt
-          pip install -r requirements_dev.txt
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements_dev.txt
       - name: test code
         run: python -m pytest tests
       - name: test artifacts
