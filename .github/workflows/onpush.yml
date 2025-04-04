@@ -53,4 +53,4 @@ jobs:
           echo "using artifacts"
           echo ${{ needs.test.outputs.log-file }}
       - name: use the other thing
-        run: echo ${{secrets.SUPER_SECRET_STUFF}}
+        run: echo "${{ secrets.SUPER_SECRET_STUFF }}"
