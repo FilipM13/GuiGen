@@ -29,8 +29,10 @@ jobs:
       - name: dependencies
         run: python -m pip install -r requirements_dev.txt
       - name: test code
+        id: test
         run: python -m pytest tests/unit_tests
       - name: test artifacts
+        if: failure() && ${{ steps.test.outcome }} == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: log-unit-tests
@@ -44,8 +46,10 @@ jobs:
       - name: dependencies
         run: python -m pip install -r requirements_dev.txt
       - name: test code
+        id: test
         run: python -m pytest tests/module_tests
       - name: test artifacts
+        if: failure() && ${{ steps.test.outcome }} == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: log-module-tests
