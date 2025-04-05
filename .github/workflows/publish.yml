@@ -5,7 +5,11 @@ on:
     types: [created]
 
 jobs:
+  lint_and_test:
+    uses: ./.github/workflows/list_and_test.yml
+
   pypi-publish:
+    needs: lint_and_test
     name: Publish release to PyPI
     runs-on: ubuntu-latest
     environment:
