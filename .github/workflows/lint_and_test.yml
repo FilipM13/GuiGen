@@ -64,6 +64,7 @@ jobs:
         id: test
         run: python -m pytest tests/unit_tests
       - name: test artifacts
+        if: failure() && steps.test.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: log-unit-tests
@@ -100,7 +101,7 @@ jobs:
           path: logs-module
 
   all-pass:
-    name: check if any filed
+    name: check if any failed
     needs: [lint, test-unit, test-module]
     if: failure()
     runs-on: ubuntu-latest
