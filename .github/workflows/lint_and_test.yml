@@ -99,12 +99,3 @@ jobs:
         with:
           name: log-module-tests
           path: logs-module
-
-  all-pass:
-    name: check if any failed
-    needs: [lint, test-unit, test-module]
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "At least one of the previous jobs failed."
-      - run: echo "Yes, this is stupid usage of jobs but I'm playing with worflows now and you can't stop me :)"
