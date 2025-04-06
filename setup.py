@@ -11,6 +11,7 @@ if __name__ == '__main__':
         name='GuiGen',
         description='GuiGen',
         author='Filip Matejko',
+        author_email='matejkofilip@gmail.com',
         version='1.0.2',
         long_description=long_description,
         long_description_content_type="text/markdown",
