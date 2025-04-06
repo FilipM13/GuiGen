@@ -8,6 +8,8 @@ inputs:
 runs:
   using: composite
   steps:
+    - run: echo inputs.python-version
+      shell: bash
     - name: python setup
       id: pydeps
       uses: actions/setup-python@v5
