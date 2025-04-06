@@ -37,7 +37,7 @@ jobs:
   test-module:
     strategy:
       matrix:
-        py_ver: ['3.7', '3.9', '3.10', '3.11', '3.13']
+        py_ver: ['3.9', '3.10', '3.11', '3.13']
         os: [ubuntu-latest, windows-latest]
     name: run module tests
     runs-on: ${{ matrix.os }}
