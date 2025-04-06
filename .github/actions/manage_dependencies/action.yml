@@ -8,13 +8,13 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: echo inputs.python-version
+    - run: echo ${{ inputs.python-version }}
       shell: bash
     - name: python setup
       id: pydeps
       uses: actions/setup-python@v5
       with:
-        python-version: inputs.python-version
+        python-version: ${{ inputs.python-version }}
         cache: 'pip'
         cache-dependency-path: 'requirements*.txt'
 
