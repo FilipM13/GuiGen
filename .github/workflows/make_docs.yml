@@ -13,7 +13,7 @@ jobs:
           pip install -r requirements_dev.txt
           mkdir docs
           cd docs
-          sphinx-quickstart -q --ext-autodoc --ext-viewcode -p GuiGen -a "Filip Matejko" -v $gg_ver
+          sphinx-quickstart -q --ext-autodoc --ext-viewcode -p GuiGen -a "Filip Matejko" -v "$gg_ver"
           echo "   modules" >> index.rst
           sphinx-apidoc -o . ../src -d 2
           make html
