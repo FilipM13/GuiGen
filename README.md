@@ -71,6 +71,7 @@ a = App(
 )
 
 a.build()
+a.launch()
 ```
 
 ### HTML:
@@ -118,6 +119,7 @@ a = App(
 )
 
 a.build()
+a.launch()
 ```
 Jinja template:
 ```Jinja

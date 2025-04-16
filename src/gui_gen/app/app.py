@@ -62,12 +62,13 @@ class App(metaclass=MetaTemplated):
         rendered_gui = template.render(app=self)
         with open(self.gui_directory + "style.css", "w", encoding="utf-8") as gui:
             gui.write(rendered_gui)
-
+    
+    def launch(self, remove_after_closed: bool = True):
         # run app
         eel.init(self.gui_directory)
         eel.start("GUI.html", mode="default")
         print("app stopped")
 
-        # # delete directory
-        shutil.rmtree(self.gui_directory)
-        pass
+        # delete directory
+        if remove_after_closed:
+            shutil.rmtree(self.gui_directory)
