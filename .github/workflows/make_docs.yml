@@ -1,5 +1,5 @@
 name: make docs with sphinx
-on: [push]
+on: [release, workflow_dispatch]
 jobs:
 
   make_docs:
