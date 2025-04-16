@@ -5,8 +5,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/manage_dependencies
+      - uses: actions/checkout@v4manage_dependencies
+      - uses: ./.github/actions/
       - name: check black and mypy
         run: |
           python -m black --check src
