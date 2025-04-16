@@ -10,7 +10,7 @@ jobs:
         run: |
           pip install .
           gg_ver="$(pip show GuiGen | grep 'Version: [0-9\.]*' | cut -f2 -d ' ')"
-          pop install -r requirements_dev.txt
+          pip install -r requirements_dev.txt
           mkdir docs
           cd docs
           sphinx-quickstart -q --ext-autodoc --ext-viewcode -p GuiGen -a "Filip Matejko" -v $gg_ver --master modules
