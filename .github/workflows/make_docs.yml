@@ -9,12 +9,13 @@ jobs:
       - uses: ./.github/actions/manage_dependencies
       - name: prepare
         run: |
-          gg_ver="$(pip show GuiGen | grep 'Version: [0-9\.]*' | cut -f2 -d ' ')"
+          echo "GG_VER=$(pip show GuiGen | grep 'Version: [0-9\.]*' | cut -f2 -d ' ')" >> $GITHUB_ENV
+          # gg_ver="$(pip show GuiGen | grep 'Version: [0-9\.]*' | cut -f2 -d ' ')"
           mkdir docs
           cd docs
       - name: quickstart
         run: |
-          sphinx-quickstart -q --ext-autodoc --ext-viewcode -p GuiGen -a "Filip Matejko" -v $gg_ver
+          sphinx-quickstart -q --ext-autodoc --ext-viewcode -p GuiGen -a "Filip Matejko" -v ${{ env.GG_VER }}
           echo "   modules" >> index.rst
       - name: document
         run: |
