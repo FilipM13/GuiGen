@@ -7,21 +7,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/manage_dependencies
-      - name: prepare
+      - name: create docs
         run: |
-          echo "GG_VER=$(pip show GuiGen | grep 'Version: [0-9\.]*' | cut -f2 -d ' ')" >> $GITHUB_ENV
-          # gg_ver="$(pip show GuiGen | grep 'Version: [0-9\.]*' | cut -f2 -d ' ')"
+          gg_ver="$(pip show GuiGen | grep 'Version: [0-9\.]*' | cut -f2 -d ' ')"
+          pip install -r requirements_dev.txt
           mkdir docs
           cd docs
-      - name: quickstart
-        run: |
-          sphinx-quickstart -q --ext-autodoc --ext-viewcode -p GuiGen -a "Filip Matejko" -v ${{ env.GG_VER }}
+          sphinx-quickstart -q --ext-autodoc --ext-viewcode -p GuiGen -a "Filip Matejko" -v $gg_ver
           echo "   modules" >> index.rst
-      - name: document
-        run: |
           sphinx-apidoc -o . ../src -d 2
-      - name: build
-        run: |
           make html
           cp _build/html/modules.html _build/html/index.html
           cd ..
