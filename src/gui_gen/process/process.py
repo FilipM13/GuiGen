@@ -11,7 +11,7 @@ from gui_gen.arguments.generic import Argument
 
 class Process(metaclass=MetaTemplated):
     template_html = "templates/process.jinja2"
-    process_registry: dict[str, Process] = dict()
+    process_registry: dict[str, 'Process'] = dict()
 
     def __init__(self, func: Callable, name=None, doc=None):
         self.func = func
