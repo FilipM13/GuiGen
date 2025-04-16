@@ -3,7 +3,7 @@ import os
 
 
 class MetaTemplated(type):
-    all_templates: set['MetaTemplated'] = set()
+    all_templates: set["MetaTemplated"] = set()
 
     def __new__(cls, cls_name, cls_parents, cls_attrs):
         rv = type.__new__(cls, cls_name, cls_parents, cls_attrs)
@@ -31,7 +31,7 @@ class MetaTemplated(type):
 
 
 class MetaArg(MetaTemplated):
-    registry: dict[str, 'MetaArg'] = dict()
+    registry: dict[str, "MetaArg"] = dict()
 
     def __new__(cls, cls_name, cls_parents, cls_attrs):
         rv = super().__new__(cls, cls_name, cls_parents, cls_attrs)
