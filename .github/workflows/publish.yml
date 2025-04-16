@@ -6,7 +6,7 @@ on:
 
 jobs:
   lint_and_test:
-    uses: ./.github/workflows/list_and_test.yml
+    uses: ./.github/workflows/lint_and_test.yml
 
   pypi-publish:
     needs: lint_and_test
