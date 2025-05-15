@@ -33,12 +33,12 @@ function request_process(name){
     [y, M, d, h, m, s] = [
         now.getFullYear(),
         now.getMonth(),
-        now.getDay(),
+        now.getDate(),
         now.getHours(),
         now.getMinutes(),
         now.getSeconds(),
     ];
-    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+    c3.innerHTML = `${y}/${M+1}/${d} ${h}:${m}:${s}`;
 };
 
 

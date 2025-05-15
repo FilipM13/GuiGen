@@ -9,6 +9,10 @@ from gui_gen.meta.meta import MetaArg, MetaTemplated
 from gui_gen.arguments.generic import Argument
 
 
+class MappingException(Exception):
+    pass
+
+
 class Process(metaclass=MetaTemplated):
     template_html = "templates/process.jinja2"
     process_registry: dict[str, "Process"] = dict()
@@ -37,16 +41,21 @@ class Process(metaclass=MetaTemplated):
         pass
 
     def execute_process(self, args):
-        values = dict()
-        spec = inspect.getfullargspec(self.func)
-        args = {a["name"]: a["value"] for a in args}
-        for name, val in args.items():
-            values[name] = self.args[name].map(val)
-        for name in spec.args:
-            if name not in args.keys():
-                values[name] = self.args[name].default
-
-        rv = self.func(**values)
+        try:
+            values = dict()
+            spec = inspect.getfullargspec(self.func)
+            args = {a["name"]: a["value"] for a in args}
+            for name, val in args.items():
+                try:
+                    values[name] = self.args[name].map(val)
+                except:
+                    raise MappingException(f"MappingException for {name}: {val}")
+            for name in spec.args:
+                if name not in args.keys():
+                    values[name] = self.args[name].default
+            rv = self.func(**values)
+        except Exception as e:
+            rv = e.__str__()
         eel.receive_msg(
             self.func.__name__, datetime.now().strftime("%Y/%m/%d %H:%M:%S"), str(rv)
         )
