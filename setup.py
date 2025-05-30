@@ -12,7 +12,7 @@ if __name__ == '__main__':
         description='GuiGen',
         author='Filip Matejko',
         author_email='matejkofilip@gmail.com',
-        version='1.1.0',
+        version='1.2.0',
         long_description=long_description,
         long_description_content_type="text/markdown",
         url='https://github.com/FilipM13/GuiGen',

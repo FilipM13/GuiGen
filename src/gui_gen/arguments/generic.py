@@ -4,6 +4,7 @@ from gui_gen.meta.meta import MetaArg
 class Argument(metaclass=MetaArg):
     maps_to: type = str
     template_html: str = "templates/generic.jinja2"
+    type_default: bool = False
 
     def __init__(self, name, default):
         self.name = name

@@ -75,6 +75,13 @@
       <input name="a4" placeholder="Argument" value="1"/>
       <br/>
      </div>
+     <div class="input_div">
+      <label>
+       a5
+      </label>
+      <input name="a5" placeholder="Int" step="1" type="number" value="1"/>
+      <br/>
+     </div>
      <input class="run" onclick="request_process('my_proc')" type="button" value="Submit"/>
     </form>
     <h3>
@@ -249,12 +256,12 @@ function request_process(name){
     [y, M, d, h, m, s] = [
         now.getFullYear(),
         now.getMonth(),
-        now.getDay(),
+        now.getDate(),
         now.getHours(),
         now.getMinutes(),
         now.getSeconds(),
     ];
-    c3.innerHTML = `${y}/${M}/${d} ${h}:${m}:${s}`;
+    c3.innerHTML = `${y}/${M+1}/${d} ${h}:${m}:${s}`;
 };
 
 
@@ -264,5 +271,13 @@ eel.expose(receive_msg);
         output = document.getElementById("output_"+process);
         output.innerHTML += '<span class="timestamp">' + ts + ': </span>' + msg + '<br>';
     }
+
+// getting path to file
+async function getFilePath(input) {
+    console.log(input);
+    let path = await eel.select_file()();
+    console.log(input.previousSibling.previousSibling)
+    input.previousSibling.previousSibling.value = path;
+};
  </script>
 </html>

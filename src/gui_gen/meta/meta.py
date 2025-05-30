@@ -32,6 +32,7 @@ class MetaTemplated(type):
 
 class MetaArg(MetaTemplated):
     registry: dict[str, "MetaArg"] = dict()
+    base_types: dict[type, "MetaArg"] = dict()
 
     def __new__(cls, cls_name, cls_parents, cls_attrs):
         rv = super().__new__(cls, cls_name, cls_parents, cls_attrs)
@@ -44,9 +45,12 @@ class MetaArg(MetaTemplated):
         # check maping mechanism exists
         assert hasattr(rv, "map")
         assert hasattr(rv, "maps_to")
+        assert hasattr(rv, "type_default")
 
         # register class
         cls.registry[cls_name] = rv
+        if rv.type_default or (rv.maps_to not in cls.base_types):
+            cls.base_types[rv.maps_to] = rv
         print(f"Argument class {cls_name} registered successfully.")
         return rv
 

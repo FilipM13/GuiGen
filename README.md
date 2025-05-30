@@ -26,7 +26,8 @@ def my_proc(
     a1: arguments.Argument,
     a2: arguments.Float,
     a3: arguments.Int,
-    a4 = 1
+    a4 = 1,
+    a5: int = 1  # base types are supported, if no input_template is found for specific type hint, it will defalt to arguments.Argument (str)
 ):
     sleep(10)
     return datetime.now()

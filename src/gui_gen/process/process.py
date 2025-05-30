@@ -37,6 +37,10 @@ class Process(metaclass=MetaTemplated):
             )
             for name, default in args:
                 type_hint = spec.annotations.get(name, Argument)
+                print(type_hint)
+                if not issubclass(type_hint, Argument):
+                    type_hint = Argument.base_types.get(type_hint, Argument)
+                print(type_hint)
                 self.args[name] = type_hint(name=name, default=default)
         pass
 
