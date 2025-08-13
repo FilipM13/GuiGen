@@ -9,11 +9,11 @@ The rules are simple:
 3. Register all instances of `Process` in `App` class instance.
 4. Use `app.build()` and after a little bit of waiting a GUI will pop up!
 
-Is it slow? Perhaps.<br>
-Does it work for complex apps? Nope.<br>
+Is it slow? In some cases.<br>
+Does it work for complex apps? Not really.<br>
 Will it fail you once upon a time? Maybe.<br>
-Was it "tHorOUgHly TEstEd"? Hell nah. <br>
-Is it easy to use? Can it gather all your small scripts in one elegant GUI? Will it save you from going insane while trying to center a div? Very much yes, sir!<br>
+Was it "thoroughly tested"? No. <br>
+Is it easy to use? Can it gather all your small scripts in one elegant GUI? Will it save you from going insane while trying to center a div? Yes!<br>
 
 ## Example use case 1
 ```python
